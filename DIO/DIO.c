@@ -73,6 +73,7 @@ void DIO_toggle_port(char portname) {
 void DIO_enable_pullup(char portname, uint8_t pinnumber, uint8_t enable) {
 	int idx = get_port_index(portname);
 	if (idx >= 0) {
+		CLR_BIT(SFIOR, PUD); // ensure global pull-ups are allowed
 		CLR_BIT(*DDR[idx], pinnumber); // ensure input
 		if (enable) SET_BIT(*PORT[idx], pinnumber);
 		else CLR_BIT(*PORT[idx], pinnumber);
