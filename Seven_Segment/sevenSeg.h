@@ -30,6 +30,16 @@ typedef struct {
 	SEG_Type type;         // COMMON_ANODE or COMMON_CATHODE
 } SevenSeg_t;
 
+typedef struct{
+	char bcd_ports[4];
+	uint8_t bcd_pins[4];
+	
+	char comm_port;
+	uint8_t comm_pin;
+	
+	SEG_Type type;
+} BCDSevenSeg_t;
+
 /**
  * Initializes the 7-segment display, including segment pins and common pin.
  */
@@ -40,8 +50,11 @@ void SEG_init(const SevenSeg_t* seg);
  */
 void SEG_display_digit(const SevenSeg_t* seg, uint8_t digit, SegMode_t mode);
 
-
 void SEG_display_two_digit(const SevenSeg_t* seg1, const SevenSeg_t* seg2, uint8_t number, SegMode_t mode);
+
+void BCDSEG_init(const BCDSevenSeg_t* seg);
+
+void BCDSEG_display_digit(const BCDSevenSeg_t* seg, uint8_t digit, SegMode_t mode);
 
 #endif /* SEVENSEG_H_ */
 
