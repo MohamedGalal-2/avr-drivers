@@ -40,5 +40,8 @@ void SEG_init(const SevenSeg_t* seg);
  */
 void SEG_display_digit(const SevenSeg_t* seg, uint8_t digit, SegMode_t mode);
 
+
+void SEG_display_two_digit(const SevenSeg_t* seg1, const SevenSeg_t* seg2, uint8_t number, SegMode_t mode);
+
 #endif /* SEVENSEG_H_ */
 
