@@ -79,3 +79,51 @@ void DIO_enable_pullup(char portname, uint8_t pinnumber, uint8_t enable) {
 		else CLR_BIT(*PORT[idx], pinnumber);
 	}
 }
+
+void DIO_write_low_nibble(unsigned char portname,unsigned char value)
+{
+	value&=0x0f;
+	switch(portname)
+	{
+		case 'A':
+		PORTA&=0xf0;
+		PORTA|=value;
+		break;
+		case 'B':
+		PORTB&=0xf0;
+		PORTB|=value;
+		break;
+		case 'C':
+		PORTC&=0xf0;
+		PORTC|=value;
+		break;
+		case 'D':
+		PORTD&=0xf0;
+		PORTD|=value;
+		break;
+	}
+}
+
+void DIO_write_high_nibble(unsigned char portname,unsigned char value)
+{
+	value<<=4;
+	switch(portname)
+	{
+		case 'A':
+		PORTA&=0x0f;
+		PORTA|=value;
+		break;
+		case 'B':
+		PORTB&=0x0f;
+		PORTB|=value;
+		break;
+		case 'C':
+		PORTC&=0x0f;
+		PORTC|=value;
+		break;
+		case 'D':
+		PORTD&=0x0f;
+		PORTD|=value;
+		break;
+	}
+}

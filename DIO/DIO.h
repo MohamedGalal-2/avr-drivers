@@ -8,10 +8,12 @@
 #ifndef DIO_H_
 #define DIO_H_
 
-#define HIGH   1
-#define LOW    0
-#define OUTPUT 1
-#define INPUT  0 
+#define HIGH    1
+#define LOW     0
+#define OUTPUT  1
+#define INPUT   0 
+#define ENABLE  1
+#define DISABLE 0
 
 /*
 	Function Name        : DIO_vsetPINDir
@@ -84,7 +86,22 @@ void DIO_toggle_port(unsigned char portname);
     Function Arguments   : unsigned char portname, unsigned char pinnumber
     Function Description : Enables the internal pull-up resistor on the specified input pin.
 */
-void DIO_enable_pullup(unsigned char portname, unsigned char pinnumber);
+void DIO_enable_pullup(unsigned char portname, unsigned char pinnumber, uint8_t enable);
 
+/*
+	Function Name        : write_low_nibble
+	Function Returns     : void
+	Function Arguments   : unsigned char portname,unsigned char value
+	Function Description : write a value to the low nibble of the port 
+*/
+void DIO_write_low_nibble(unsigned char portname,unsigned char value);
+
+/*
+	Function Name        : write_high_nibble
+	Function Returns     : void
+	Function Arguments   : unsigned char portname,unsigned char value
+	Function Description : write a value to the high nibble of the port 
+*/
+void DIO_write_high_nibble(unsigned char portname,unsigned char value);
 
 #endif
