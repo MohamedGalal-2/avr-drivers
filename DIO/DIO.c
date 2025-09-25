@@ -6,6 +6,7 @@
  */ 
 
 #include <avr/io.h>
+#include <stdint.h>
 #include "std_macros.h"
 
 #define NUM_PORTS 4
